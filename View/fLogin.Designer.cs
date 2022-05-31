@@ -60,6 +60,7 @@
             this.txbNameLogin.Name = "txbNameLogin";
             this.txbNameLogin.Size = new System.Drawing.Size(185, 26);
             this.txbNameLogin.TabIndex = 1;
+            this.txbNameLogin.Text = "admin";
             // 
             // LbNameLogin
             // 
@@ -88,6 +89,7 @@
             this.txbPwdLogin.Name = "txbPwdLogin";
             this.txbPwdLogin.Size = new System.Drawing.Size(185, 26);
             this.txbPwdLogin.TabIndex = 2;
+            this.txbPwdLogin.Text = "admin";
             this.txbPwdLogin.UseSystemPasswordChar = true;
             // 
             // lbPwdLogin

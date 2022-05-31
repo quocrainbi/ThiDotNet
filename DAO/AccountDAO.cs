@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ThiDotNet.DTO;
 
 namespace ThiDotNet.DAO
 {
@@ -24,10 +25,22 @@ namespace ThiDotNet.DAO
         }
         public bool Login(string username, string password)
         {
-            string query = "USP_Login @username = " + username + ", @password = '" + password + "'";
+            string query = "USP_Login @userName , @passWord";
 
-            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { username, password });
+
             return result.Rows.Count > 0;
+        }
+        public Account GetAccountByUserName(string userName)
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from account where userName = '" + userName + "'");
+
+            foreach (DataRow item in data.Rows)
+            {
+                return new Account(item);
+            }
+
+            return null;
         }
     }
 }

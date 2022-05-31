@@ -16,7 +16,7 @@ namespace ThiDotNet.DAO
             get { if (instance == null) instance = new DataProvider(); return DataProvider.instance; }
             private set { DataProvider.instance = value; }
         }
-        private string connectionSTR = @"SERVER=DESKTOP-NDFLA7U\SQLEXPRESS;Database=ThiDotNet;User Id = sa;pwd=123258zxc";
+        private string connectionSTR = @"SERVER=DESKTOP-NDFLA7U\SQLEXPRESS;Database=ThiDotNet1;User Id = sa;pwd=123258zxc";
         public DataProvider()
         {
 
@@ -82,7 +82,7 @@ namespace ThiDotNet.DAO
             }
             return data;
         }
-        public object ExecuteSaclar(string query, object[] parameter = null)
+        public object ExecuteScalar(string query, object[] parameter = null)
         {
             object data = 0;
 

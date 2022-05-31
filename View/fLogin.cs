@@ -39,7 +39,7 @@ namespace ThiDotNet
             }    
             else if (Login_Account(UserName,PassWork))
             {
-                fTableManager f = new fTableManager();
+                fTableManager f = new fTableManager(AccountDAO.Instance.GetAccountByUserName(UserName));
                 this.Hide();
                 f.ShowDialog();
                 this.Show();

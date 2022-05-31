@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThiDotNet.DAO;
 
 namespace ThiDotNet.View
 {
@@ -16,7 +17,14 @@ namespace ThiDotNet.View
         {
             InitializeComponent();
         }
+        void LoadListBillByDate(DateTime checkin,DateTime checkout)
+        {
+            dgvBill.DataSource = BillDAO.Instance.GetBillListByDate(checkin, checkout);
+        }
 
-
+        private void btnViewBill_Click(object sender, EventArgs e)
+        {
+            LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value);
+        }
     }
 }
