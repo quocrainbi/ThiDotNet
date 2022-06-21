@@ -9,11 +9,13 @@ namespace ThiDotNet.DTO
 {
     public class Table
     {
-        public Table(int id, string name, string status)
+        public Table(int id, string name, string status,int isdelete)
         {
             this.ID = id;
             this.Name = name;
             this.Status = status;
+            this.Isdelete = isdelete;
+
         }
 
         public Table(DataRow row)
@@ -21,6 +23,7 @@ namespace ThiDotNet.DTO
             this.ID = (int)row["id"];
             this.Name = row["name"].ToString();
             this.Status = row["status"].ToString();
+            this.Isdelete = (int)row["isdelete"];
         }
 
         private string status;
@@ -45,6 +48,12 @@ namespace ThiDotNet.DTO
         {
             get { return iD; }
             set { iD = value; }
+        }
+        private int isdelete;
+        public int Isdelete
+        {
+            get { return isdelete; }
+            set { isdelete = value; }
         }
     }
 }

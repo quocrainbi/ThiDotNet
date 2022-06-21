@@ -24,7 +24,7 @@ namespace ThiDotNet.DAO
         {
             List<Category> list = new List<Category>();
 
-            string query = "select * from FoodCategory";
+            string query = "select * from FoodCategory where isdelete = 0";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -34,6 +34,35 @@ namespace ThiDotNet.DAO
                 list.Add(category);
             }
 
+            return list;
+        }
+        public bool AddCategory(string name)
+        {
+            string query = String.Format("insert into FoodCategory values (N'{0}',0)", name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public bool DeleteCategory(int id)
+        {
+            int result = DataProvider.Instance.ExecuteNonQuery("Update FoodCategory set isdelete = 1 where id =" +id);
+            return result > 0;
+        }
+        public bool UpdateCategory(int id, string name)
+        {
+            string query = String.Format("update FoodCategory set name = N'{0}' where id = {1} ", name, id);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public List<Category> SearchCategoryByName(string Name)
+        {
+            List<Category> list = new List<Category>();
+            string query = string.Format("select * from FoodCategory where dbo.GetUnsignString(Name) like '%'+ dbo.GetUnsignString('{0}') + '%' and isdelete = 0", Name);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                Category category = new Category(item);
+                list.Add(category);
+            }
             return list;
         }
     }

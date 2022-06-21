@@ -9,12 +9,13 @@ namespace ThiDotNet.DTO
 {
     public class Food
     {
-        public Food(int id, string name, int categoryID, float price)
+        public Food(int id, string name, int categoryID, float price,int isdelete)
         {
             this.ID = id;
             this.Name = name;
             this.CategoryID = categoryID;
             this.Price = price;
+            this.Isdelete = isdelete;
         }
 
         public Food(DataRow row)
@@ -23,6 +24,7 @@ namespace ThiDotNet.DTO
             this.Name = row["name"].ToString();
             this.CategoryID = (int)row["idcategory"];
             this.Price = (float)Convert.ToDouble(row["price"].ToString());
+            this.Isdelete = (int)row["isdelete"];
         }
 
         private float price;
@@ -55,6 +57,12 @@ namespace ThiDotNet.DTO
         {
             get { return iD; }
             set { iD = value; }
+        }
+        private int isdelete;
+        public int Isdelete
+        {
+            get { return isdelete; }
+            set { isdelete = value; }
         }
     }
 }

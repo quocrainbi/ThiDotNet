@@ -52,6 +52,8 @@
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbPriceFood = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -117,6 +119,7 @@
             this.columnHeader3,
             this.columnHeader4});
             this.lvBill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvBill.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvBill.GridLines = true;
             this.lvBill.HideSelection = false;
             this.lvBill.Location = new System.Drawing.Point(0, 0);
@@ -208,6 +211,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.lbPriceFood);
+            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.nbrFoodCount);
             this.panel4.Controls.Add(this.btnAddFood);
             this.panel4.Controls.Add(this.cbFood);
@@ -250,15 +255,16 @@
             this.cbFood.FormattingEnabled = true;
             this.cbFood.Location = new System.Drawing.Point(0, 32);
             this.cbFood.Name = "cbFood";
-            this.cbFood.Size = new System.Drawing.Size(295, 22);
+            this.cbFood.Size = new System.Drawing.Size(167, 22);
             this.cbFood.TabIndex = 1;
+            this.cbFood.SelectedIndexChanged += new System.EventHandler(this.cbFood_SelectedIndexChanged);
             // 
             // cbCategory
             // 
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(0, 4);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(295, 22);
+            this.cbCategory.Size = new System.Drawing.Size(167, 22);
             this.cbCategory.TabIndex = 0;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
@@ -269,6 +275,26 @@
             this.flpTable.Name = "flpTable";
             this.flpTable.Size = new System.Drawing.Size(761, 538);
             this.flpTable.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(173, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 19);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Giá :";
+            // 
+            // lbPriceFood
+            // 
+            this.lbPriceFood.AutoSize = true;
+            this.lbPriceFood.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPriceFood.Location = new System.Drawing.Point(216, 18);
+            this.lbPriceFood.Name = "lbPriceFood";
+            this.lbPriceFood.Size = new System.Drawing.Size(35, 19);
+            this.lbPriceFood.TabIndex = 4;
+            this.lbPriceFood.Text = "0(đ)";
             // 
             // fTableManager
             // 
@@ -294,6 +320,7 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).EndInit();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nbrFoodCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -324,5 +351,7 @@
         private System.Windows.Forms.TextBox txbTotalPrice;
         private System.Windows.Forms.NumericUpDown nmDisCount;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbPriceFood;
+        private System.Windows.Forms.Label label3;
     }
 }

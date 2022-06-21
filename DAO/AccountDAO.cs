@@ -42,5 +42,34 @@ namespace ThiDotNet.DAO
 
             return null;
         }
+        public List<Account> SelectAccount( )
+        {
+            List<Account> list = new List<Account>();
+
+            string query = "USP_SelectAccount ";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Account account = new Account(item);
+                list.Add(account);
+            }
+
+            return list;
+        }
+        public bool ResetAccount(string username)
+        {
+
+            int result = DataProvider.Instance.ExecuteNonQuery("USP_ResetPWd @@username",new object[] {username});
+            return result > 0;
+        }
+        public bool DeleteAccount(string username)
+        {
+
+            int result = DataProvider.Instance.ExecuteNonQuery("USP_DeleteAccount @@username", new object[] { username });
+            return result > 0;
+        }
+
     }
 }

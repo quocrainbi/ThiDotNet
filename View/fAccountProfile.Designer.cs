@@ -32,7 +32,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txbDisPlayName = new System.Windows.Forms.TextBox();
@@ -40,6 +39,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.txbNameLogin = new System.Windows.Forms.TextBox();
             this.LbNameLogin = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bntUpdate = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -54,10 +54,10 @@
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -94,17 +94,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Thông Tin Tài Khoản";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.panel3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(408, 200);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Đôi Mật Khẩu";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -173,6 +162,17 @@
             this.LbNameLogin.TabIndex = 0;
             this.LbNameLogin.Text = "Tên đăng nhập :";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.panel3);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(408, 200);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Đôi Mật Khẩu";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.bntUpdate);
@@ -193,6 +193,7 @@
             this.bntUpdate.TabIndex = 13;
             this.bntUpdate.Text = "Cập Nhập";
             this.bntUpdate.UseVisualStyleBackColor = true;
+            this.bntUpdate.Click += new System.EventHandler(this.bntUpdate_Click);
             // 
             // panel5
             // 
@@ -294,12 +295,12 @@
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();

@@ -33,12 +33,13 @@ namespace ThiDotNet.DTO
             get { return Type; }
             set { Type = value; }
         }
-        public Account(string UserName,string PassWord,string DisPlayName,int Type)
+        public Account(string UserName,string PassWord,string DisPlayName,int Type,int isdelete)
         {
             this.UserName = UserName;
             this.PassWord = PassWord;
             this.Type = Type;
             this.DisplayName = DisPlayName;
+            this.Isdelete= isdelete;
         }
         public Account(DataRow row)
         {
@@ -46,6 +47,13 @@ namespace ThiDotNet.DTO
             this.DisplayName = (string)row["DisplayName"];
             this.PassWord = (string)row["PassWord"];
             this.Type = (int)row["Type"];
+            this.Isdelete= (int)row["isdelete"];
+        }
+        private int isdelete;
+        public int Isdelete
+        {
+            get { return isdelete; }
+            set { isdelete = value; }
         }
     }
 }

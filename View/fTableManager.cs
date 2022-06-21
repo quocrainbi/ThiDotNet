@@ -27,6 +27,10 @@ namespace ThiDotNet.View
             InitializeComponent();
             LoadTable();
             LoadCategoryFood(); 
+            if(account.type ==0)
+            {
+                this.adminToolStripMenuItem.Enabled = false;    
+            }    
         }
         #region Method
         void LoadTable()
@@ -93,23 +97,17 @@ namespace ThiDotNet.View
 
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fAccountProfile f = new fAccountProfile();
+            fAccountProfile f = new fAccountProfile(this.Account);
             f.ShowDialog();
         }
-
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.Account.type == 0)
-            {
-                MessageBox.Show("Bạn không có chức năng này"+Environment.NewLine+"Vui lòng liên hệ với quản trị viên!", "Thông báo ");
-            }
-            else
-            {
-                fAdmin f = new fAdmin();
-                this.Hide();
-                f.ShowDialog();
-                this.Show();
-            }
+            fAdmin f = new fAdmin();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+            LoadTable();
+
         }
 
         private void bnt_Click(object sender, EventArgs e)
@@ -179,7 +177,7 @@ namespace ThiDotNet.View
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
             int discount = (int)nmDisCount.Value;
 
-            double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0])*1000;
+            double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]);
             double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
 
             if (idBill != -1)
@@ -193,6 +191,18 @@ namespace ThiDotNet.View
                 }
             }
             if (TableDAO.Instance.UpdateStatusTable(table.ID, "Trống")) LoadTable();
+        }
+
+        private void cbFood_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = 0;
+
+            ComboBox cb = sender as ComboBox;
+
+            if (cb.SelectedItem == null)
+                return;
+            Food selected = cb.SelectedItem as Food;
+            lbPriceFood.Text = selected.Price + "(đ)";           
         }
     }
 }

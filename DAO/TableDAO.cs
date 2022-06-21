@@ -41,5 +41,36 @@ namespace ThiDotNet.DAO
 
             return result > 0;
         }
+        public List<Table> SearchTableByName(string name)
+        {
+            List<Table> list = new List<Table>();
+            string query = string.Format("select * from TableFood where dbo.GetUnsignString(Name) like  '%' +  dbo.GetUnsignString('{0}') +'%' and isdelete=0", name);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                Table table = new Table(item);
+                list.Add(table);
+            }
+            return list;
+        }
+        public bool AddTable(string name)
+        {
+            string query = String.Format("insert into TableFood values (N'{0}',N'Trống',0)",  name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public bool UpdateTable(int idtable, string name)
+        {
+
+            string query = String.Format("update TableFood set  name = N'{0}' where id = {1} ", name, idtable);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public bool DeleteTable(int idtable)
+        {
+            string query = String.Format("update TableFood set isdelete = 1 where id = {0} ", idtable);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
     }
 }
